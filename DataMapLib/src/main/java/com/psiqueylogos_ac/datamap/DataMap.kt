@@ -18,7 +18,8 @@ interface DataMap {
     annotation class Excluding
 
     /**
-     * Convert into map or read from map, class implementing DataMap interface
+     * Convert into map or read from map, class implementing DataMap interface.
+     * Map are type Map<String, Any>
      */
     var map: MutableMap<String, Any>
         get() {
