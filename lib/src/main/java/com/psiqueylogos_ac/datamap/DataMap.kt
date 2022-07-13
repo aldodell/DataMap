@@ -7,10 +7,19 @@ import kotlin.reflect.full.declaredMemberProperties
 import kotlin.reflect.full.hasAnnotation
 import kotlin.reflect.full.isSubtypeOf
 
-
+/**
+ * Interface intended to serialize an object to JSON, and Kotlin Map objects.
+ * A simple class could use this interface and will have
+ * two properties (read and write) to manage properties class.
+ * An inner property wich implement DataMap produce a indeed or deep serialization object.
+ *
+ */
 interface DataMap {
     annotation class Excluding
 
+    /**
+     * Convert into map or read from map, class implementing DataMap interface
+     */
     var map: MutableMap<String, Any>
         get() {
             val r = mutableMapOf<String, Any>()
@@ -48,6 +57,9 @@ interface DataMap {
             }
         }
 
+    /**
+     * Convert into json or read from json, class implementing DataMap interface
+     */
     var json: JSONObject
         get() = JSONObject(this.map as Map<*, *>?)
         set(value) {
